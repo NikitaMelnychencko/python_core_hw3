@@ -18,7 +18,7 @@ def normalize_phone(phone_number:str)->str:
         return ""
 
     if (len(value) == 10):
-        return f"+380{value}"
+        return f"+38{value}"
     elif (len(value) == 11 and value.startswith("3")):
         return f"+{value}"
     elif (value.startswith("38") and len(value) == 12):
