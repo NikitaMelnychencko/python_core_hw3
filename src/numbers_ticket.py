@@ -7,14 +7,23 @@ import random
 def get_numbers_ticket(min:int, max:int, quantity:int)->list[int]:
     numbers = []
 
-    if min < 1 or max > 1000 or quantity < 1:
-        return "Invalid input"
+    if max < min:
+        print("Max value cant be less than min value")
+        return numbers
+
+    if max - min < quantity:
+        print("The difference between max and min value is less than quantity")
+        return numbers
+
+    if min < 1 or max > 1000 or quantity < 1 :
+        print("Invalid input")
+        return numbers
 
     while len(numbers) < quantity:
         number = random.randint(min, max)
         if number not in numbers:
             numbers.append(number)
-    return numbers
+    return sorted(numbers)
 
 
 def get_parametrs(type:str)->int:
@@ -37,4 +46,4 @@ max = validation_input(get_parametrs("maximum number"), "maximum number")
 quantity = validation_input(get_parametrs("quantity of numbers"), "quantity of numbers")
 
 lottery_numbers = get_numbers_ticket(min, max, quantity)
-print(lottery_numbers)
+print("Lottery numbers: ", lottery_numbers)
